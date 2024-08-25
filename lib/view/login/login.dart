@@ -18,6 +18,7 @@ class _LoginState extends State<Login> {
   final _formpswd = GlobalKey<FormState>();
   TextEditingController pswdController = TextEditingController();
   bool _obscureText = true;
+  bool _isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +83,25 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isChecked = !_isChecked;
+                      });
+                    },
+                    icon: Icon(_isChecked
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank)),
+                Text("Remember Me"),
+                SizedBox(
+                  width: 100,
+                ),
+                TextButton(onPressed: () {}, child: Text("Forget Password"))
+              ],
             ),
             InkWell(
               onTap: () {
